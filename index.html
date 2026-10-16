@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EduRise - Grow Your Future</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0} :root{--p:#5b5bea;--s:#8b5cf6;--y:#fbbf24;--g:#22c55e;--bg:#f5f7ff;--card:#fff;--text:#20243a;--muted:#737994}
+body.dark{--bg:#111426;--card:#1b1e33;--text:#f4f5ff;--muted:#a4a8c0}
+body{font-family:Poppins,sans-serif;background:var(--bg);color:var(--text);transition:.3s;min-height:100vh}
+button,input,select{font-family:inherit}.sidebar{position:fixed;width:245px;height:100vh;background:var(--card);padding:28px 18px;border-right:1px solid #ddd;z-index:10;display:flex;flex-direction:column}
+.logo{display:flex;gap:12px;align-items:center;margin-bottom:35px}.logo-icon{width:43px;height:43px;border-radius:14px;background:linear-gradient(135deg,var(--p),var(--s));display:grid;place-items:center;color:white;font-size:21px}.logo h2{font-size:20px}.logo small{color:var(--muted);font-size:9px}
+nav{display:flex;flex-direction:column;gap:7px}.nav-btn{border:0;background:transparent;color:var(--muted);padding:13px 15px;border-radius:12px;text-align:left;cursor:pointer;font-size:14px;transition:.25s}.nav-btn:hover,.nav-btn.active{background:#eeeeff;color:var(--p);font-weight:700;transform:translateX(3px)}
+.sidebar-bottom{margin-top:auto}.theme-btn{width:100%;border:0;background:#eeeeff;color:var(--text);padding:12px;border-radius:12px;cursor:pointer}
+.main{margin-left:245px;padding:40px;max-width:1450px}.page{display:none;animation:in .4s}.active-page{display:block}@keyframes in{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.hero{min-height:430px;padding:55px;border-radius:30px;background:linear-gradient(135deg,#5b5bea,#8059e9);color:white;display:flex;align-items:center;justify-content:space-between;overflow:hidden;box-shadow:0 20px 50px #5b5bea40}.hero-text{max-width:620px}.badge{display:inline-block;padding:7px 13px;border-radius:20px;background:#5b5bea18;color:var(--p);font-size:11px;font-weight:700;margin-bottom:14px}.hero .badge{color:white;background:#ffffff22}.hero h1{font-size:clamp(36px,5vw,58px);line-height:1.1;margin-bottom:18px}.hero h1 span,.page-heading h1 span{color:var(--y)}.hero p{line-height:1.8;color:#ffffffcc;margin-bottom:25px}
+.primary-btn{border:0;padding:13px 21px;border-radius:12px;background:linear-gradient(135deg,var(--p),var(--s));color:white;font-weight:700;cursor:pointer;transition:.25s;box-shadow:0 7px 20px #5b5bea40}.primary-btn:hover{transform:translateY(-3px)}.hero .primary-btn{background:white;color:var(--p)}
+.hero-character{width:300px;height:300px;position:relative;display:grid;place-items:center}.character-circle{width:190px;height:190px;border-radius:50%;background:#ffffff25;display:grid;place-items:center;font-size:85px;animation:pulse 3s infinite}@keyframes pulse{50%{transform:scale(1.07)}}
+.floating-card{position:absolute;background:white;color:#292b44;padding:9px 13px;border-radius:11px;font-size:11px;font-weight:700;box-shadow:0 10px 25px #0002;animation:float 4s infinite}.card-a{top:20px;right:15px}.card-b{bottom:30px;left:10px;animation-delay:1s}.card-c{bottom:80px;right:0;animation-delay:2s}@keyframes float{50%{transform:translateY(-12px)}}
+.motivation-card,.stat-card,.method-card,.focus-box,.matcher-card,.big-progress,.achievement{background:var(--card);border:1px solid #5b5bea18;border-radius:20px;box-shadow:0 10px 30px #00000008}.motivation-card{margin-top:24px;padding:25px;display:flex;justify-content:space-between;align-items:center}.mini-title{font-size:10px;letter-spacing:1px;font-weight:800;color:var(--p)}.motivation-card h2{margin-top:7px}.motivation-card p,.page-heading p,.method-card p,.focus-info p,.education-reminder p,.achievement p{color:var(--muted);font-size:13px}.round-btn{width:48px;height:48px;border:0;border-radius:50%;background:#5b5bea14;cursor:pointer;font-size:19px;transition:.3s}.round-btn:hover{transform:rotate(180deg)}
+.section-title{margin:35px 0 18px}.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.stat-card{padding:20px;display:flex;gap:14px;align-items:center;transition:.3s}.stat-card:hover,.method-card:hover,.achievement:hover{transform:translateY(-5px)}.stat-icon{width:47px;height:47px;border-radius:14px;display:grid;place-items:center;font-size:20px}.blue{background:#e0e7ff}.purple{background:#ede9fe}.yellow{background:#fef3c7}.green{background:#dcfce7}.stat-card span{display:block;color:var(--muted);font-size:10px}.stat-card strong{font-size:17px}
+.challenge{margin-top:23px;padding:27px;border-radius:20px;background:#fff8d9;border:1px solid #f3da66;display:flex;justify-content:space-between;align-items:center;gap:20px}.challenge p{color:#777;font-size:13px;margin-top:5px}
+.page-heading{margin-bottom:30px}.page-heading h1{font-size:clamp(30px,4vw,48px);margin:8px 0}.page-heading h1 span{color:var(--p)}
+.study-methods{display:grid;grid-template-columns:repeat(4,1fr);gap:17px}.method-card{padding:24px;transition:.3s}.method-card>div{font-size:34px;margin-bottom:13px}.method-card h3{margin-bottom:7px}.method-card p{line-height:1.7}
+.focus-box{margin-top:23px;padding:32px;display:flex;justify-content:space-between;align-items:center;gap:25px}.focus-info{max-width:550px}.focus-info h2{margin:8px 0}.timer{text-align:center}.timer-display{font-size:52px;font-weight:800;color:var(--p);letter-spacing:2px}.timer-buttons{display:flex;gap:8px;justify-content:center}.secondary-btn{border:0;padding:13px 20px;border-radius:12px;background:#5b5bea14;color:var(--p);font-weight:700;cursor:pointer}
+.tips-box{margin-top:23px;padding:28px;border-radius:20px;background:#5b5bea10}.tips-box h2{margin-bottom:17px}.tips-list{display:grid;grid-template-columns:1fr 1fr;gap:10px}.tips-list div{background:var(--card);padding:13px;border-radius:12px;display:flex;gap:13px;font-size:13px}.tips-list b{color:var(--p)}
+.matcher-card{max-width:800px;margin:auto;padding:32px}.question{margin-bottom:22px}.question label{display:block;font-weight:600;margin-bottom:8px;font-size:14px}select,input{width:100%;padding:13px;border:2px solid #5b5bea18;background:var(--bg);color:var(--text);border-radius:12px;outline:none}select:focus,input:focus{border-color:var(--p)}.full-btn{width:100%}.career-result{margin-top:22px;padding:25px;text-align:center;background:#5b5bea10;border-radius:18px}.career-result p{color:var(--muted);max-width:600px;margin:9px auto 14px;line-height:1.7;font-size:13px}.result-icon{font-size:45px}.tags{display:flex;gap:7px;justify-content:center;flex-wrap:wrap}.tags span{padding:6px 11px;background:var(--card);color:var(--p);border-radius:20px;font-size:10px;font-weight:700}.hidden{display:none}.education-reminder{margin-top:22px;padding:22px;border-radius:18px;background:#fff8d9;border:1px solid #f3da66;display:flex;gap:14px;color:#665817}.education-reminder p{color:#665817;margin-top:4px}
+.goal-input{display:flex;gap:10px;max-width:800px;margin-bottom:20px}.goal-input input{flex:1}.goal-list{max-width:800px;display:flex;flex-direction:column;gap:9px}.goal-item{background:var(--card);border:1px solid #5b5bea18;padding:16px;border-radius:14px;display:flex;align-items:center;gap:12px}.goal-check{width:24px;height:24px;border-radius:50%;border:2px solid var(--p);background:transparent;cursor:pointer;flex-shrink:0}.goal-item.completed{opacity:.55}.goal-item.completed .goal-check{background:var(--p)}.goal-item.completed .goal-text{text-decoration:line-through}.goal-text{flex:1;font-size:13px}.delete-goal{border:0;background:transparent;cursor:pointer}.big-progress{max-width:800px;margin-top:20px;padding:23px}.progress-header{display:flex;justify-content:space-between;margin-bottom:13px}.progress-header span{color:var(--muted);font-size:12px}.progress-bar{height:10px;background:#5b5bea18;border-radius:20px;overflow:hidden}.progress-bar div{height:100%;width:0;background:linear-gradient(90deg,var(--p),var(--s));transition:.5s}
+.achievement-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}.achievement{padding:23px;opacity:.4;transition:.3s}.achievement.unlocked{opacity:1}.achievement>div{font-size:34px;margin-bottom:9px}.achievement p{margin-top:5px}.level-card{max-width:800px;margin-top:22px;padding:28px;border-radius:23px;background:linear-gradient(135deg,#5b5bea,#8059e9);color:white}.level-top{display:flex;justify-content:space-between;margin-bottom:18px}.level-top span{font-size:9px;opacity:.7}.level-card .progress-bar{background:#ffffff33}.level-card .progress-bar div{background:var(--y)}.level-card p{margin-top:10px;font-size:12px;opacity:.8}
+.toast{position:fixed;right:22px;bottom:22px;background:#20243a;color:white;padding:13px 18px;border-radius:11px;transform:translateY(100px);opacity:0;transition:.4s;z-index:100;font-size:13px}.toast.show{transform:none;opacity:1}.mobile-header{display:none}
+@media(max-width:1000px){.stats-grid{grid-template-columns:repeat(2,1fr)}.study-methods{grid-template-columns:repeat(2,1fr)}.achievement-grid{grid-template-columns:repeat(2,1fr)}.hero-character{display:none}}
+@media(max-width:700px){.sidebar{transform:translateX(-100%);transition:.3s}.sidebar.mobile-open{transform:none}.main{margin:0;padding:20px}.mobile-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}.mobile-header .logo{margin:0}.mobile-header button{border:0;background:var(--card);color:var(--text);font-size:22px;width:44px;height:44px;border-radius:12px}.hero{padding:30px;min-height:410px}.hero h1{font-size:37px}.stats-grid,.study-methods,.achievement-grid{grid-template-columns:1fr}.challenge,.focus-box{flex-direction:column;align-items:flex-start}.timer{width:100%}.tips-list{grid-template-columns:1fr}.goal-input{flex-direction:column}}
+</style>
+</head>
+<body>
+<aside class="sidebar">
+<div class="logo"><div class="logo-icon">🚀</div><div><h2>EduRise</h2><small>Grow Your Future</small></div></div>
+<nav>
+<button class="nav-btn active" data-page="home">🏠 &nbsp; Beranda</button>
+<button class="nav-btn" data-page="study">📚 &nbsp; Belajar</button>
+<button class="nav-btn" data-page="career">🧭 &nbsp; Pendidikan</button>
+<button class="nav-btn" data-page="goals">🎯 &nbsp; Target</button>
+<button class="nav-btn" data-page="achievements">🏆 &nbsp; Pencapaian</button>
+</nav>
+<div class="sidebar-bottom"><button id="themeBtn" class="theme-btn">🌙 Mode Gelap</button></div>
+</aside>
+
+<main class="main">
+<header class="mobile-header"><div class="logo"><div class="logo-icon">🚀</div><h2>EduRise</h2></div><button id="mobileMenu">☰</button></header>
+
+<section id="home" class="page active-page">
+<div class="hero"><div class="hero-text"><span class="badge">✨ Tempat Bertumbuh Para Pelajar</span><h1>Belajar hari ini, <span>bangun masa depan.</span></h1><p>Tidak harus langsung hebat. Yang penting terus berkembang sedikit demi sedikit.</p><button class="primary-btn" onclick="changePage('study')">🚀 Mulai Belajar</button></div>
+<div class="hero-character"><div class="character-circle">🎓</div><div class="floating-card card-a">⭐ +25 XP</div><div class="floating-card card-b">🔥 7 Hari</div><div class="floating-card card-c">📚 Focus!</div></div></div>
+
+<div class="motivation-card"><div><span class="mini-title">💡 MOTIVASI HARI INI</span><h2 id="quote">Masa depan dibangun dari kebiasaan kecil hari ini.</h2><p>— EduRise</p></div><button id="newQuote" class="round-btn">🔄</button></div>
+<div class="section-title"><span class="mini-title">📊 PERKEMBANGANMU</span><h2>Keep Growing!</h2></div>
+<div class="stats-grid">
+<div class="stat-card"><div class="stat-icon blue">⭐</div><div><span>XP</span><strong id="xpDisplay">0</strong></div></div>
+<div class="stat-card"><div class="stat-icon purple">🔥</div><div><span>Streak</span><strong id="streakDisplay">0 Hari</strong></div></div>
+<div class="stat-card"><div class="stat-icon yellow">🎯</div><div><span>Target</span><strong id="goalDisplay">0%</strong></div></div>
+<div class="stat-card"><div class="stat-icon green">🏆</div><div><span>Level</span><strong id="levelDisplay">Pelajar Baru</strong></div></div>
+</div>
+<div class="challenge"><div><span class="mini-title">🔥 DAILY CHALLENGE</span><h2>Belajar fokus selama 25 menit</h2><p>Selesaikan satu sesi belajar hari ini untuk mendapatkan <b>+50 XP</b>.</p></div><button class="primary-btn" onclick="changePage('study')">Mulai Challenge</button></div>
+</section>
+
+<section id="study" class="page">
+<div class="page-heading"><span class="badge">📚 Study Center</span><h1>Belajar dengan <span>cara yang lebih pintar.</span></h1><p>Bukan tentang belajar paling lama, tetapi belajar dengan strategi yang tepat.</p></div>
+<div class="study-methods">
+<div class="method-card"><div>🧠</div><h3>Active Recall</h3><p>Coba ingat kembali materi tanpa melihat buku. Cara ini membantu memperkuat ingatan.</p></div>
+<div class="method-card"><div>🔁</div><h3>Spaced Repetition</h3><p>Ulangi materi secara berkala daripada mempelajarinya sekaligus.</p></div>
+<div class="method-card"><div>⏱️</div><h3>Pomodoro</h3><p>Belajar fokus dalam waktu tertentu, kemudian beristirahat sebentar.</p></div>
+<div class="method-card"><div>✍️</div><h3>Feynman</h3><p>Jelaskan kembali materi dengan bahasa sederhana seolah-olah sedang mengajarkannya.</p></div>
+</div>
+<div class="focus-box"><div class="focus-info"><span class="mini-title">⏱️ FOCUS SESSION</span><h2>25 Menit untuk Masa Depan</h2><p>Singkirkan distraksi dan fokus pada satu pekerjaan sampai timer selesai.</p></div><div class="timer"><div id="timerDisplay" class="timer-display">25:00</div><div class="timer-buttons"><button id="startTimer" class="primary-btn">▶ Mulai</button><button id="resetTimer" class="secondary-btn">↻ Reset</button></div></div></div>
+<div class="tips-box"><h2>💡 Rahasia belajar yang konsisten</h2><div class="tips-list"><div><b>01</b><span>Mulai dari 15–25 menit jika sedang sulit fokus.</span></div><div><b>02</b><span>Letakkan HP jauh ketika sedang belajar.</span></div><div><b>03</b><span>Jangan hanya membaca. Coba jelaskan kembali.</span></div><div><b>04</b><span>Rayakan kemajuan kecil daripada menunggu sempurna.</span></div></div></div>
+</section>
+
+<section id="career" class="page">
+<div class="page-heading"><span class="badge">🧭 Education Matcher</span><h1>Temukan arah <span>pendidikanmu.</span></h1><p>Pendidikan yang tepat bukan hanya tentang nilai, tetapi juga minat, kemampuan dan tujuanmu.</p></div>
+<div class="matcher-card">
+<div class="question"><label>1. Bidang apa yang paling kamu sukai?</label><select id="interest"><option value="">Pilih bidang</option><option value="science">Sains & Kesehatan</option><option value="technology">Teknologi</option><option value="social">Sosial & Humaniora</option><option value="business">Bisnis</option><option value="creative">Seni & Kreatif</option></select></div>
+<div class="question"><label>2. Apa kemampuan yang paling menonjol?</label><select id="ability"><option value="">Pilih kemampuan</option><option value="logic">Logika & Analisis</option><option value="communication">Komunikasi</option><option value="creativity">Kreativitas</option><option value="leadership">Kepemimpinan</option><option value="research">Riset</option></select></div>
+<div class="question"><label>3. Bagaimana gaya kerja yang kamu sukai?</label><select id="style"><option value="">Pilih gaya</option><option value="individual">Mandiri</option><option value="team">Bekerja dalam tim</option><option value="flexible">Fleksibel</option><option value="structured">Terstruktur</option></select></div>
+<button class="primary-btn full-btn" onclick="findCareer()">🧭 Cari Rekomendasi</button>
+<div id="careerResult" class="career-result hidden"><div class="result-icon">🚀</div><h2 id="careerTitle">Rekomendasi</h2><p id="careerDescription">-</p><div id="careerTags" class="tags"></div></div>
+</div>
+<div class="education-reminder"><div>🌱</div><div><h3>Ingat!</h3><p>Hasil ini bukan keputusan mutlak. Gunakan sebagai bahan pertimbangan. Kenali dirimu, cari informasi tentang jurusan, pertimbangkan kemampuan akademik dan finansial, lalu diskusikan dengan orang tua atau guru.</p></div></div>
+</section>
+
+<section id="goals" class="page">
+<div class="page-heading"><span class="badge">🎯 Goal Center</span><h1>Jadikan mimpi <span>sebuah rencana.</span></h1><p>Mimpi tanpa langkah hanya menjadi angan. Mari ubah menjadi target kecil.</p></div>
+<div class="goal-input"><input type="text" id="goalInput" placeholder="Contoh: Belajar matematika 30 menit"><button class="primary-btn" onclick="addGoal()">+ Tambah</button></div>
+<div id="goalList" class="goal-list"></div>
+<div class="big-progress"><div class="progress-header"><div><span>Progress keseluruhan</span><h2 id="bigProgressText">0%</h2></div><span>🎯</span></div><div class="progress-bar"><div id="progressFill"></div></div></div>
+</section>
+
+<section id="achievements" class="page">
+<div class="page-heading"><span class="badge">🏆 Achievement</span><h1>Setiap langkah kecil <span>layak diapresiasi.</span></h1><p>Kumpulkan XP dan buka berbagai pencapaian.</p></div>
+<div class="achievement-grid">
+<div class="achievement unlocked"><div>🌱</div><h3>First Step</h3><p>Mulai menggunakan EduRise.</p></div>
+<div class="achievement"><div>🔥</div><h3>Focus Mode</h3><p>Selesaikan satu sesi belajar.</p></div>
+<div class="achievement"><div>🎯</div><h3>Goal Setter</h3><p>Buat target belajar pertama.</p></div>
+<div class="achievement"><div>⭐</div><h3>Rising Student</h3><p>Dapatkan 100 XP.</p></div>
+<div class="achievement"><div>🚀</div><h3>Future Builder</h3><p>Dapatkan 250 XP.</p></div>
+<div class="achievement"><div>🏆</div><h3>EduRise Legend</h3><p>Dapatkan 500 XP.</p></div>
+</div>
+<div class="level-card"><div class="level-top"><div><span>LEVEL KAMU</span><h2 id="achievementLevel">Pelajar Baru</h2></div><strong id="achievementXP">0 XP</strong></div><div class="progress-bar"><div id="levelProgress"></div></div><p id="levelMessage">Terus belajar untuk naik level!</p></div>
+</section>
+</main>
+<div id="toast" class="toast">🎉 Mantap!</div>
+
+<script>
+let data=JSON.parse(localStorage.getItem("eduriseData"))||{xp:0,streak:0,goals:[]};
+const pages=document.querySelectorAll(".page"),nav=document.querySelectorAll(".nav-btn");
+nav.forEach(b=>b.onclick=()=>changePage(b.dataset.page));
+function changePage(name){pages.forEach(p=>p.classList.remove("active-page"));nav.forEach(b=>b.classList.remove("active"));document.getElementById(name).classList.add("active-page");document.querySelector(`[data-page="${name}"]`)?.classList.add("active");window.scrollTo({top:0,behavior:"smooth"});document.querySelector(".sidebar")?.classList.remove("mobile-open")}
+document.getElementById("mobileMenu").onclick=()=>document.querySelector(".sidebar").classList.toggle("mobile-open");
+const themeBtn=document.getElementById("themeBtn");
+if(localStorage.getItem("darkMode")==="true"){document.body.classList.add("dark");themeBtn.textContent="☀️ Mode Terang"}
+themeBtn.onclick=()=>{document.body.classList.toggle("dark");let d=document.body.classList.contains("dark");localStorage.setItem("darkMode",d);themeBtn.textContent=d?"☀️ Mode Terang":"🌙 Mode Gelap"};
+const quotes=["Masa depan dibangun dari kebiasaan kecil hari ini.","Tidak perlu menjadi sempurna. Jadilah sedikit lebih baik dari kemarin.","Nilai bukan satu-satunya ukuran keberhasilan, tetapi usaha dan prosesmu tetap berarti.","Belajar sekarang mungkin melelahkan, tetapi menyerah pada impian juga punya harga.","Orang hebat juga pernah menjadi pemula.","Satu halaman yang kamu baca hari ini bisa menjadi satu langkah menuju cita-citamu.","Jangan membandingkan bab pertama hidupmu dengan bab terakhir orang lain.","Konsistensi kecil setiap hari lebih kuat daripada semangat besar yang hanya datang sesekali.","Kamu tidak harus tahu seluruh jalan. Cukup tahu langkah berikutnya.","Tidak ada kata terlambat untuk mulai memperbaiki cara belajarmu."];
+document.getElementById("newQuote").onclick=()=>document.getElementById("quote").textContent=quotes[Math.floor(Math.random()*quotes.length)];
+function save(){localStorage.setItem("eduriseData",JSON.stringify(data))}
+function addXP(n){data.xp+=n;save();updateStats();showToast(`⭐ +${n} XP!`)}
+function level(){if(data.xp>=500)return"EduRise Legend";if(data.xp>=250)return"Future Builder";if(data.xp>=100)return"Rising Student";if(data.xp>=50)return"Focused Learner";return"Pelajar Baru"}
+function updateStats(){xpDisplay.textContent=data.xp;streakDisplay.textContent=data.streak+" Hari";levelDisplay.textContent=level();achievementLevel.textContent=level();achievementXP.textContent=data.xp+" XP";updateGoalProgress();updateAchievements();updateLevelProgress()}
+let seconds=1500,interval=null,running=false;
+function showTimer(){let m=Math.floor(seconds/60),s=seconds%60;timerDisplay.textContent=`${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")}`}
+startTimer.onclick=()=>{if(running)return;running=true;startTimer.textContent="⏸ Berjalan...";interval=setInterval(()=>{seconds--;showTimer();if(seconds<=0){clearInterval(interval);running=false;seconds=1500;showTimer();startTimer.textContent="▶ Mulai";addXP(50);showToast("🎉 Focus session selesai! +50 XP")}},1000)};
+resetTimer.onclick=()=>{clearInterval(interval);running=false;seconds=1500;showTimer();startTimer.textContent="▶ Mulai"};showTimer();
+function findCareer(){let i=interest.value,a=ability.value,s=style.value;if(!i||!a||!s)return showToast("⚠️ Lengkapi semua pertanyaan dulu!");let title,desc,tags;if(i==="science"||a==="research"){title="Sains & Kesehatan";desc="Kamu terlihat memiliki ketertarikan pada dunia sains, penelitian, atau kesehatan. Eksplorasi kedokteran, farmasi, biologi, kimia, kesehatan masyarakat, atau penelitian.";tags=["Kedokteran","Farmasi","Biologi","Kimia","Kesehatan"]}else if(i==="technology"||a==="logic"){title="Teknologi & Informatika";desc="Kamu dapat mengeksplorasi teknologi yang membutuhkan logika dan pemecahan masalah. Informatika, data, sistem informasi, dan pengembangan teknologi bisa menjadi pilihan.";tags=["Informatika","Programming","Data","AI","Teknologi"]}else if(i==="business"||a==="leadership"){title="Bisnis & Manajemen";desc="Kemampuan memimpin dan ketertarikan terhadap bisnis dapat berkembang melalui manajemen, ekonomi, kewirausahaan, pemasaran, dan keuangan.";tags=["Manajemen","Ekonomi","Marketing","Bisnis","Entrepreneurship"]}else if(i==="creative"||a==="creativity"){title="Kreatif & Desain";desc="Kreativitasmu dapat berkembang di desain, multimedia, animasi, komunikasi visual, film, musik, atau industri kreatif.";tags=["Desain","Animasi","Musik","Film","Multimedia"]}else{title="Sosial, Pendidikan & Komunikasi";desc="Kamu bisa mengeksplorasi bidang yang banyak berhubungan dengan manusia: komunikasi, pendidikan, psikologi, sosial, bahasa, atau hubungan masyarakat.";tags=["Pendidikan","Psikologi","Komunikasi","Sosiologi","Bahasa"]}careerTitle.textContent=title;careerDescription.textContent=desc;careerTags.innerHTML=tags.map(t=>`<span>${t}</span>`).join("");careerResult.classList.remove("hidden");addXP(10)}
+function addGoal(){let input=document.getElementById("goalInput"),text=input.value.trim();if(!text)return showToast("✏️ Tulis targetmu terlebih dahulu!");data.goals.push({text,completed:false});input.value="";save();renderGoals();updateStats();addXP(5)}
+function renderGoals(){goalList.innerHTML="";if(!data.goals.length){goalList.innerHTML='<div class="goal-item">🎯 Belum ada target. Yuk buat target pertamamu!</div>';return}data.goals.forEach((g,i)=>{let el=document.createElement("div");el.className="goal-item"+(g.completed?" completed":"");el.innerHTML=`<button class="goal-check" onclick="toggleGoal(${i})"></button><span class="goal-text">${escapeHTML(g.text)}</span><button class="delete-goal" onclick="deleteGoal(${i})">🗑️</button>`;goalList.appendChild(el)})}
+function toggleGoal(i){data.goals[i].completed=!data.goals[i].completed;if(data.goals[i].completed){addXP(15);showToast("🎯 Target selesai! +15 XP")}save();renderGoals();updateStats()}
+function deleteGoal(i){data.goals.splice(i,1);save();renderGoals();updateStats()}
+function updateGoalProgress(){let total=data.goals.length,done=data.goals.filter(g=>g.completed).length,p=total?Math.round(done/total*100):0;goalDisplay.textContent=p+"%";bigProgressText.textContent=p+"%";progressFill.style.width=p+"%"}
+function updateAchievements(){let a=document.querySelectorAll(".achievement");if(data.xp>=50)a[1].classList.add("unlocked");if(data.goals.length)a[2].classList.add("unlocked");if(data.xp>=100)a[3].classList.add("unlocked");if(data.xp>=250)a[4].classList.add("unlocked");if(data.xp>=500)a[5].classList.add("unlocked")}
+function updateLevelProgress(){let p=0,msg="";if(data.xp<50){p=data.xp/50*100;msg="🎯 Target berikutnya: 50 XP — Focused Learner"}else if(data.xp<100){p=(data.xp-50)/50*100;msg="🔥 Sedikit lagi menuju Rising Student!"}else if(data.xp<250){p=(data.xp-100)/150*100;msg="🚀 Terus berkembang menuju Future Builder!"}else if(data.xp<500){p=(data.xp-250)/250*100;msg="🏆 Kamu sudah luar biasa! Kejar 500 XP!"}else{p=100;msg="👑 Kamu mencapai level tertinggi EduRise!"}levelProgress.style.width=p+"%";levelMessage.textContent=msg}
+function showToast(msg){let t=document.getElementById("toast");t.textContent=msg;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),2500)}
+function escapeHTML(t){let d=document.createElement("div");d.textContent=t;return d.innerHTML}
+renderGoals();updateStats();
+</script>
+</body>
+</html>
